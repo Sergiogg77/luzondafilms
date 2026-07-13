@@ -2,9 +2,41 @@ const header = document.querySelector('.site-header');
 const reveals = document.querySelectorAll('.reveal');
 const year = document.getElementById('year');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
 
 if (year) {
   year.textContent = new Date().getFullYear();
+}
+
+let currentHeroSlide = 0;
+let heroRotation;
+
+const showHeroSlide = (index) => {
+  heroSlides.forEach((slide, slideIndex) => {
+    slide.classList.toggle('is-active', slideIndex === index);
+  });
+};
+
+const startHeroSlideshow = () => {
+  clearInterval(heroRotation);
+  if (heroSlides.length > 1) {
+    heroRotation = window.setInterval(() => {
+      currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+      showHeroSlide(currentHeroSlide);
+    }, 5000);
+  }
+};
+
+if (heroSlides.length > 0) {
+  showHeroSlide(currentHeroSlide);
+  startHeroSlideshow();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(heroRotation);
+    } else {
+      startHeroSlideshow();
+    }
+  });
 }
 
 const handleScroll = () => {

@@ -30,20 +30,19 @@
 
     <main id="top">
       <section class="hero">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="assets/video/hero-poster.jpg"
-        >
-          <source src="assets/video/hero.mp4" type="video/mp4" />
-        </video>
+        <div class="hero-slideshow" aria-hidden="true">
+          <img class="hero-slide is-active" src="assets/images/hero/hero-1.jpg" alt="" />
+          <img class="hero-slide" src="assets/images/hero/hero-2.jpg" alt="" />
+          <img class="hero-slide" src="assets/images/hero/hero-3.jpg" alt="" />
+          <img class="hero-slide" src="assets/images/hero/hero-4.jpg" alt="" />
+          <img class="hero-slide" src="assets/images/hero/hero-5.jpg" alt="" />
+        </div>
         <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
+        <div class="hero-content">
           <p class="eyebrow">Productora Audiovisual Independiente</p>
           <h1>LUZONDA FILMS</h1>
+          <p class="hero-copy">Narrativas cinematográficas, documentales y piezas de autor con una estética íntima, elegante y contemporánea.</p>
+          <a class="button" href="#work">Ver trabajos</a>
         </div>
       </section>
 
