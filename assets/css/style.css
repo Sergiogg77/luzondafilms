@@ -116,15 +116,26 @@ video {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.72) 100%);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.08), transparent 22%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.84) 0%, rgba(0, 0, 0, 0.42) 45%, rgba(0, 0, 0, 0.72) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
   width: min(100%, 760px);
-  padding: 6rem 2rem;
+  padding: clamp(5rem, 14vh, 7rem) 2rem 7rem;
   text-align: left;
+}
+
+.hero-content::after {
+  content: "";
+  display: block;
+  width: 6rem;
+  height: 1px;
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .hero-content .eyebrow,
@@ -134,6 +145,14 @@ video {
   opacity: 0;
   transform: translateY(20px);
   animation: heroFadeUp 0.9s ease forwards;
+}
+
+.hero h1 {
+  text-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+}
+
+.hero .eyebrow {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .hero-content .eyebrow { animation-delay: 0.1s; }
@@ -161,6 +180,7 @@ video {
   font-size: clamp(2.5rem, 4.8vw, 4.6rem);
   line-height: 1.04;
   margin-bottom: 1rem;
+  letter-spacing: 0.14em;
 }
 
 .hero-copy {
@@ -300,32 +320,55 @@ video {
   align-items: center;
 }
 
+.about-copy h2 {
+  margin-bottom: 1.4rem;
+}
+
 .about-copy p {
   margin-top: 1rem;
   color: #cfcfcf;
-  max-width: 40rem;
+  max-width: 46rem;
+  line-height: 1.85;
+  font-size: 1rem;
 }
 
 .about-visual {
+  position: relative;
   border: 1px solid var(--line);
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
+}
+
+.about-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));
+  pointer-events: none;
 }
 
 .about-visual img {
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  min-height: 460px;
   object-fit: cover;
   filter: grayscale(100%) contrast(110%);
+  display: block;
 }
 
 .about-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 1rem 1.2rem;
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #e6e3dd;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(8px);
 }
 
 .contact-card {

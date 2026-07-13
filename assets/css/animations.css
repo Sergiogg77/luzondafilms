@@ -46,3 +46,18 @@
 .hero-content h1 { animation-delay: 0.2s; }
 .hero-content .hero-copy { animation-delay: 0.35s; }
 .hero-content .button { animation-delay: 0.5s; }
+
+.about-copy,
+.about-visual {
+  opacity: 0;
+  transform: translateY(36px);
+  animation: fadeInUp 1s ease both;
+}
+
+.about-copy {
+  animation-delay: 0.15s;
+}
+
+.about-visual {
+  animation-delay: 0.35s;
+}
