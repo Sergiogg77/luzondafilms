@@ -185,9 +185,11 @@ video {
 
 .hero .eyebrow {
   color: rgba(255, 255, 255, 0.82);
-  letter-spacing: 0.34em;
-  font-size: 0.72rem;
-  margin-bottom: 0.9rem;
+  letter-spacing: 0.3em;
+  font-size: 0.68rem;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .hero-content .eyebrow { animation-delay: 0.1s; }
@@ -207,23 +209,25 @@ video {
 .section-heading h2,
 .about-copy h2,
 .contact-card h2 {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.18em;
 }
 
 .hero h1 {
-  font-size: clamp(2.1rem, 3.8vw, 3.7rem);
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
   line-height: 1.02;
-  margin-bottom: 0.9rem;
-  letter-spacing: 0.14em;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
 }
 
 .hero-copy {
   max-width: 34rem;
   font-size: 0.95rem;
   color: rgba(231, 231, 231, 0.86);
-  margin-bottom: 1.8rem;
-  line-height: 1.75;
+  margin-bottom: 1.7rem;
+  line-height: 1.72;
   font-weight: 300;
 }
 

@@ -23,8 +23,8 @@
 @keyframes heroFadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
-    filter: blur(6px);
+    transform: translateY(18px);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
