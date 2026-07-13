@@ -154,11 +154,11 @@ video {
   position: relative;
   z-index: 2;
   width: min(100%, 720px);
-  padding: clamp(5rem, 14vh, 7rem) 2rem 7rem;
+  padding: clamp(5rem, 16vh, 8rem) 2rem 7rem;
   text-align: left;
   isolation: isolate;
   margin-right: auto;
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .hero-content::after {
