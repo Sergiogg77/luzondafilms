@@ -3,8 +3,8 @@
 }
 
 @media (max-width: 900px) {
-  .project-card img {
-    height: 220px;
+  .projects-list {
+    grid-template-columns: 1fr;
   }
 
   .about-grid {

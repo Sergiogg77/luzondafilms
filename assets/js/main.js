@@ -3,6 +3,7 @@ const reveals = document.querySelectorAll('.reveal');
 const year = document.getElementById('year');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+const projectCards = document.querySelectorAll('.project-card');
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -38,6 +39,27 @@ if (heroSlides.length > 0) {
     }
   });
 }
+
+projectCards.forEach((card) => {
+  const video = card.querySelector('.project-video');
+  if (!video) {
+    return;
+  }
+
+  const playPreview = () => {
+    video.play().catch(() => {});
+  };
+
+  const pausePreview = () => {
+    video.pause();
+    video.currentTime = 0;
+  };
+
+  card.addEventListener('mouseenter', playPreview);
+  card.addEventListener('focusin', playPreview);
+  card.addEventListener('mouseleave', pausePreview);
+  card.addEventListener('focusout', pausePreview);
+});
 
 const handleScroll = () => {
   if (window.scrollY > 20) {
