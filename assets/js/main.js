@@ -46,8 +46,17 @@ projectCards.forEach((card) => {
     return;
   }
 
-  const playPreview = () => {
-    video.play().catch(() => {});
+  const playPreview = async () => {
+    try {
+      if (video.readyState < 2) {
+        video.load();
+      }
+
+      video.currentTime = 0;
+      await video.play();
+    } catch (error) {
+      // La reproducción puede quedar bloqueada hasta que el navegador lo permita.
+    }
   };
 
   const pausePreview = () => {
@@ -56,6 +65,7 @@ projectCards.forEach((card) => {
   };
 
   card.addEventListener('mouseenter', playPreview);
+  card.addEventListener('touchstart', playPreview, { passive: true });
   card.addEventListener('focusin', playPreview);
   card.addEventListener('mouseleave', pausePreview);
   card.addEventListener('focusout', pausePreview);
