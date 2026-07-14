@@ -43,7 +43,8 @@ if (heroSlides.length > 0) {
 projectCards.forEach((card) => {
   const video = card.querySelector('.project-video');
   const previewArea = card.querySelector('.project-media');
-  if (!video || !previewArea) {
+  const previewImage = previewArea?.querySelector('img');
+  if (!video || !previewArea || !previewImage) {
     return;
   }
 
@@ -52,43 +53,60 @@ projectCards.forEach((card) => {
   video.playsInline = true;
   video.autoplay = false;
   video.loop = true;
+  video.volume = 0;
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
   video.setAttribute('webkit-playsinline', '');
   video.preload = 'auto';
   video.load();
 
-  const showVideo = async () => {
-    try {
-      video.style.opacity = '1';
-      video.style.transform = 'scale(1.02)';
-      video.style.zIndex = '2';
-      if (video.paused || video.ended) {
-        await video.play();
+  let playAttempted = false;
+
+  const showVideo = () => {
+    video.style.opacity = '1';
+    video.style.transform = 'scale(1.02)';
+    video.style.zIndex = '2';
+    video.style.visibility = 'visible';
+    card.classList.add('is-video-playing');
+
+    const startPlayback = () => {
+      if (playAttempted || !video.paused) {
+        return;
       }
-    } catch (error) {
-      // La reproducción puede quedar bloqueada hasta que el navegador lo permita.
+
+      playAttempted = true;
+      const playPromise = video.play();
+      if (playPromise?.catch) {
+        playPromise.catch(() => {
+          playAttempted = false;
+        });
+      }
+    };
+
+    if (video.readyState >= 2) {
+      startPlayback();
+    } else {
+      video.addEventListener('canplay', startPlayback, { once: true });
+      video.addEventListener('loadeddata', startPlayback, { once: true });
     }
   };
 
   const hideVideo = () => {
     video.pause();
     video.currentTime = 0;
+    playAttempted = false;
     video.style.opacity = '0';
     video.style.transform = 'scale(1.03)';
     video.style.zIndex = '0';
+    video.style.visibility = 'hidden';
+    card.classList.remove('is-video-playing');
   };
 
-  previewArea.addEventListener('mouseover', showVideo);
-  previewArea.addEventListener('mouseout', hideVideo);
-  previewArea.addEventListener('focusin', showVideo);
-  previewArea.addEventListener('focusout', hideVideo);
-  previewArea.addEventListener('touchstart', showVideo, { passive: true });
-
-  card.addEventListener('mouseover', showVideo);
-  card.addEventListener('mouseout', hideVideo);
-  card.addEventListener('focusin', showVideo);
-  card.addEventListener('focusout', hideVideo);
+  previewImage.addEventListener('mouseenter', showVideo);
+  previewImage.addEventListener('mouseleave', hideVideo);
+  previewImage.addEventListener('focusin', showVideo);
+  previewImage.addEventListener('focusout', hideVideo);
+  previewImage.addEventListener('touchstart', showVideo, { passive: true });
 });
 
 const handleScroll = () => {

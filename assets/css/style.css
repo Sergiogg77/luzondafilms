@@ -347,12 +347,11 @@ video {
   pointer-events: none;
 }
 
-.project-card:hover .project-media img {
+.project-media:hover img {
   transform: scale(1.08);
   filter: brightness(0.68) saturate(0.82) contrast(1.08);
 }
 
-.project-card:hover .project-media video,
 .project-media:hover .project-video,
 .project-card.is-video-playing .project-media video {
   opacity: 1;
@@ -360,7 +359,7 @@ video {
   z-index: 2;
 }
 
-.project-card:hover .project-media::after,
+.project-media:hover::after,
 .project-card.is-video-playing .project-media::after {
   opacity: 0.2;
 }
