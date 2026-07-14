@@ -352,7 +352,8 @@ video {
   filter: brightness(0.68) saturate(0.82) contrast(1.08);
 }
 
-.project-card:hover .project-media video {
+.project-card:hover .project-media video,
+.project-media:hover .project-video {
   opacity: 1;
   transform: scale(1.02);
   z-index: 2;

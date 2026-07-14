@@ -50,6 +50,8 @@ projectCards.forEach((card) => {
   video.muted = true;
   video.defaultMuted = true;
   video.playsInline = true;
+  video.autoplay = false;
+  video.loop = true;
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
   video.preload = 'auto';
