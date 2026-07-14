@@ -47,6 +47,10 @@ projectCards.forEach((card) => {
     return;
   }
 
+  video.muted = true;
+  video.playsInline = true;
+  video.setAttribute('muted', '');
+
   const playPreview = async () => {
     try {
       if (video.readyState < 2) {
@@ -65,11 +69,11 @@ projectCards.forEach((card) => {
     video.currentTime = 0;
   };
 
-  previewArea.addEventListener('mouseenter', playPreview);
-  previewArea.addEventListener('touchstart', playPreview, { passive: true });
+  previewArea.addEventListener('mouseover', playPreview);
+  previewArea.addEventListener('mouseout', pausePreview);
   previewArea.addEventListener('focusin', playPreview);
-  previewArea.addEventListener('mouseleave', pausePreview);
   previewArea.addEventListener('focusout', pausePreview);
+  previewArea.addEventListener('touchstart', playPreview, { passive: true });
 });
 
 const handleScroll = () => {
