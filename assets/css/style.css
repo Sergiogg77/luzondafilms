@@ -319,7 +319,7 @@ video {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.48) 100%);
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
   transition: opacity 0.35s ease;
 }
@@ -336,14 +336,15 @@ video {
 
 .project-media img {
   transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease;
-  z-index: 1;
+  z-index: 0;
 }
 
 .project-media video {
   opacity: 0;
   transform: scale(1.03);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .project-card:hover .project-media img {

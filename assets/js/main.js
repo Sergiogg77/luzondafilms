@@ -48,8 +48,11 @@ projectCards.forEach((card) => {
   }
 
   video.muted = true;
+  video.defaultMuted = true;
   video.playsInline = true;
   video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  video.preload = 'auto';
 
   const playPreview = async () => {
     try {
@@ -69,11 +72,17 @@ projectCards.forEach((card) => {
     video.currentTime = 0;
   };
 
-  previewArea.addEventListener('mouseover', playPreview);
-  previewArea.addEventListener('mouseout', pausePreview);
+  previewArea.addEventListener('mouseenter', playPreview);
+  previewArea.addEventListener('mouseleave', pausePreview);
   previewArea.addEventListener('focusin', playPreview);
   previewArea.addEventListener('focusout', pausePreview);
   previewArea.addEventListener('touchstart', playPreview, { passive: true });
+
+  card.addEventListener('mouseenter', playPreview);
+  card.addEventListener('mouseleave', pausePreview);
+  card.addEventListener('focusin', playPreview);
+  card.addEventListener('focusout', pausePreview);
+
 });
 
 const handleScroll = () => {
