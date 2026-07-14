@@ -353,13 +353,15 @@ video {
 }
 
 .project-card:hover .project-media video,
-.project-media:hover .project-video {
+.project-media:hover .project-video,
+.project-card.is-video-playing .project-media video {
   opacity: 1;
   transform: scale(1.02);
   z-index: 2;
 }
 
-.project-card:hover .project-media::after {
+.project-card:hover .project-media::after,
+.project-card.is-video-playing .project-media::after {
   opacity: 0.2;
 }
 

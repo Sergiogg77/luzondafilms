@@ -54,37 +54,41 @@ projectCards.forEach((card) => {
   video.loop = true;
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
   video.preload = 'auto';
+  video.load();
 
-  const playPreview = async () => {
+  const showVideo = async () => {
     try {
-      if (video.readyState < 2) {
-        video.load();
+      video.style.opacity = '1';
+      video.style.transform = 'scale(1.02)';
+      video.style.zIndex = '2';
+      if (video.paused || video.ended) {
+        await video.play();
       }
-
-      video.currentTime = 0;
-      await video.play();
     } catch (error) {
       // La reproducción puede quedar bloqueada hasta que el navegador lo permita.
     }
   };
 
-  const pausePreview = () => {
+  const hideVideo = () => {
     video.pause();
     video.currentTime = 0;
+    video.style.opacity = '0';
+    video.style.transform = 'scale(1.03)';
+    video.style.zIndex = '0';
   };
 
-  previewArea.addEventListener('mouseenter', playPreview);
-  previewArea.addEventListener('mouseleave', pausePreview);
-  previewArea.addEventListener('focusin', playPreview);
-  previewArea.addEventListener('focusout', pausePreview);
-  previewArea.addEventListener('touchstart', playPreview, { passive: true });
+  previewArea.addEventListener('mouseover', showVideo);
+  previewArea.addEventListener('mouseout', hideVideo);
+  previewArea.addEventListener('focusin', showVideo);
+  previewArea.addEventListener('focusout', hideVideo);
+  previewArea.addEventListener('touchstart', showVideo, { passive: true });
 
-  card.addEventListener('mouseenter', playPreview);
-  card.addEventListener('mouseleave', pausePreview);
-  card.addEventListener('focusin', playPreview);
-  card.addEventListener('focusout', pausePreview);
-
+  card.addEventListener('mouseover', showVideo);
+  card.addEventListener('mouseout', hideVideo);
+  card.addEventListener('focusin', showVideo);
+  card.addEventListener('focusout', hideVideo);
 });
 
 const handleScroll = () => {
