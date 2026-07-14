@@ -42,7 +42,8 @@ if (heroSlides.length > 0) {
 
 projectCards.forEach((card) => {
   const video = card.querySelector('.project-video');
-  if (!video) {
+  const previewArea = card.querySelector('.project-media');
+  if (!video || !previewArea) {
     return;
   }
 
@@ -64,11 +65,11 @@ projectCards.forEach((card) => {
     video.currentTime = 0;
   };
 
-  card.addEventListener('mouseenter', playPreview);
-  card.addEventListener('touchstart', playPreview, { passive: true });
-  card.addEventListener('focusin', playPreview);
-  card.addEventListener('mouseleave', pausePreview);
-  card.addEventListener('focusout', pausePreview);
+  previewArea.addEventListener('mouseenter', playPreview);
+  previewArea.addEventListener('touchstart', playPreview, { passive: true });
+  previewArea.addEventListener('focusin', playPreview);
+  previewArea.addEventListener('mouseleave', pausePreview);
+  previewArea.addEventListener('focusout', pausePreview);
 });
 
 const handleScroll = () => {
