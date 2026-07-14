@@ -57,12 +57,74 @@ video {
   backdrop-filter: blur(16px);
 }
 
-.logo {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+.logo,
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo:hover,
+.hero-brand:hover {
+  transform: translateY(-2px);
+}
+
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 12px 28px rgba(0, 0, 0, 0.24);
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #f7efe9;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.95;
+}
+
+.logo-title {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.36em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
+  color: #f7efe9;
+}
+
+.logo-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d7b48a;
+}
+
+.hero-brand .logo-mark {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.1rem;
+  font-size: 1.05rem;
+}
+
+.hero-brand .logo-title {
+  font-size: 0.82rem;
+}
+
+.hero-brand .logo-subtitle {
+  font-size: 1.4rem;
+  letter-spacing: 0.3em;
 }
 
 .nav-links a {
@@ -173,7 +235,7 @@ video {
 }
 
 .hero-content .eyebrow,
-.hero-content h1,
+.hero-content .hero-brand,
 .hero-content .hero-copy,
 .hero-content .button {
   opacity: 0;
