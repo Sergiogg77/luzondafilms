@@ -82,9 +82,10 @@ video {
 
 .site-logo {
   display: block;
-  height: clamp(62px, 6.8vw, 86px);
+  height: clamp(72px, 7.8vw, 96px);
   width: auto;
   object-fit: contain;
+  animation: headerLogoFloat 3.2s ease-in-out infinite;
 }
 
 .logo-mark {
@@ -154,6 +155,16 @@ video {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes headerLogoFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.02);
   }
 }
 
