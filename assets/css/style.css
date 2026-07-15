@@ -64,6 +64,9 @@ video {
   gap: 0.8rem;
   text-decoration: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .logo {
@@ -87,9 +90,11 @@ video {
   object-fit: contain;
   animation: headerLogoFloat 3.2s ease-in-out infinite;
   opacity: 1;
-  background: transparent;
-  box-shadow: none;
-  filter: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: 0 !important;
+  padding: 0;
 }
 
 .logo-mark {
