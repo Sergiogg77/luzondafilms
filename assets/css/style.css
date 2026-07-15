@@ -82,7 +82,7 @@ video {
 
 .site-logo {
   display: block;
-  height: clamp(54px, 6vw, 78px);
+  height: clamp(62px, 6.8vw, 86px);
   width: auto;
   object-fit: contain;
 }
@@ -255,10 +255,6 @@ video {
     padding: clamp(4rem, 15vh, 6rem) 1rem 4rem;
     margin-top: 3rem;
   }
-
-  .hero-main-logo {
-    width: min(100%, 320px);
-  }
 }
 
 .hero {
@@ -326,21 +322,6 @@ video {
   margin-right: auto;
   margin-top: 5rem;
   align-self: end;
-}
-
-.hero-logo-only {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.hero-main-logo {
-  display: block;
-  width: min(100%, 560px);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
 }
 
 .hero-content .eyebrow,
