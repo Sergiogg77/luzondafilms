@@ -86,8 +86,9 @@ video {
   width: auto;
   object-fit: contain;
   animation: headerLogoFloat 3.2s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.34)) saturate(1.05);
-  opacity: 0.97;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.24)) saturate(1.04);
+  opacity: 1;
+  background: transparent;
 }
 
 .logo-mark {
