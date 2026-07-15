@@ -80,11 +80,15 @@ video {
   transform: scale(1.05);
 }
 
-.site-logo {
-  display: block;
-  height: 60px;
-  width: auto;
-  object-fit: contain;
+.site-brand {
+  display: inline-block;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f7efe9;
+  line-height: 1.1;
 }
 
 .logo-mark {
@@ -225,8 +229,9 @@ video {
     gap: 0.75rem;
   }
 
-  .site-logo {
-    height: clamp(44px, 8vw, 60px);
+  .site-brand {
+    font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+    letter-spacing: 0.12em;
   }
 
   .nav-links {
