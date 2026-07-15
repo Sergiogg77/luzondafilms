@@ -43,8 +43,7 @@ if (heroSlides.length > 0) {
 projectCards.forEach((card) => {
   const video = card.querySelector('.project-video');
   const previewArea = card.querySelector('.project-media');
-  const previewImage = previewArea?.querySelector('img');
-  if (!video || !previewArea || !previewImage) {
+  if (!video || !previewArea) {
     return;
   }
 
@@ -60,9 +59,11 @@ projectCards.forEach((card) => {
   video.preload = 'auto';
   video.load();
 
-  let playAttempted = false;
+  let isInteracting = false;
 
   const showVideo = () => {
+    isInteracting = true;
+    video.currentTime = 0;
     video.style.opacity = '1';
     video.style.transform = 'scale(1.02)';
     video.style.zIndex = '2';
@@ -70,15 +71,14 @@ projectCards.forEach((card) => {
     card.classList.add('is-video-playing');
 
     const startPlayback = () => {
-      if (playAttempted || !video.paused) {
+      if (!isInteracting || !video.paused) {
         return;
       }
 
-      playAttempted = true;
       const playPromise = video.play();
       if (playPromise?.catch) {
         playPromise.catch(() => {
-          playAttempted = false;
+          isInteracting = false;
         });
       }
     };
@@ -92,9 +92,13 @@ projectCards.forEach((card) => {
   };
 
   const hideVideo = () => {
-    video.pause();
+    isInteracting = false;
+
+    if (!video.paused) {
+      video.pause();
+    }
+
     video.currentTime = 0;
-    playAttempted = false;
     video.style.opacity = '0';
     video.style.transform = 'scale(1.03)';
     video.style.zIndex = '0';
@@ -102,11 +106,15 @@ projectCards.forEach((card) => {
     card.classList.remove('is-video-playing');
   };
 
-  previewImage.addEventListener('mouseenter', showVideo);
-  previewImage.addEventListener('mouseleave', hideVideo);
-  previewImage.addEventListener('focusin', showVideo);
-  previewImage.addEventListener('focusout', hideVideo);
-  previewImage.addEventListener('touchstart', showVideo, { passive: true });
+  previewArea.addEventListener('mouseenter', showVideo);
+  previewArea.addEventListener('mouseleave', hideVideo);
+  previewArea.addEventListener('pointerenter', showVideo);
+  previewArea.addEventListener('pointerleave', hideVideo);
+  previewArea.addEventListener('focusin', showVideo);
+  previewArea.addEventListener('focusout', hideVideo);
+  previewArea.addEventListener('touchstart', showVideo, { passive: true });
+  previewArea.addEventListener('touchend', hideVideo, { passive: true });
+  previewArea.addEventListener('touchcancel', hideVideo, { passive: true });
 });
 
 const handleScroll = () => {
