@@ -52,7 +52,7 @@ video {
 }
 
 .site-header.is-sticky {
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.72);
   border-bottom-color: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(16px);
 }
@@ -82,10 +82,12 @@ video {
 
 .site-logo {
   display: block;
-  height: clamp(72px, 7.8vw, 96px);
+  height: clamp(84px, 9vw, 112px);
   width: auto;
   object-fit: contain;
   animation: headerLogoFloat 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.34)) saturate(1.05);
+  opacity: 0.97;
 }
 
 .logo-mark {
