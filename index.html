@@ -75,9 +75,13 @@
                   src="assets/images/project-2.jpg"
                   alt="Solo pienso en ti"
                 />
-                <video class="project-video" muted loop playsinline preload="auto" poster="assets/images/project-2.jpg">
-                  <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4" />
-                </video>
+               <iframe
+  class="project-video vimeo-player"
+  src="https://player.vimeo.com/video/1068668153?background=1&muted=1&autoplay=0&loop=1&byline=0&title=0&portrait=0"
+  frameborder="0"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowfullscreen>
+</iframe>
                 <span class="project-badge">Preview</span>
               </div>
               <div class="card-body">
@@ -194,6 +198,7 @@
 
     <button id="scrollTopBtn" class="scroll-top" aria-label="Volver arriba" title="Volver arriba">↑</button>
 
-    <script src="assets/js/main.js"></script>
-  </body>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
 </html>
