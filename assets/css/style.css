@@ -80,15 +80,11 @@ video {
   transform: scale(1.05);
 }
 
-.site-brand {
-  display: inline-block;
-  font-family: "Inter", "Segoe UI", sans-serif;
-  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #f7efe9;
-  line-height: 1.1;
+.site-logo {
+  display: block;
+  height: clamp(54px, 6vw, 78px);
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-mark {
@@ -229,9 +225,8 @@ video {
     gap: 0.75rem;
   }
 
-  .site-brand {
-    font-size: clamp(0.95rem, 3.2vw, 1.1rem);
-    letter-spacing: 0.12em;
+  .site-logo {
+    height: clamp(46px, 8vw, 58px);
   }
 
   .nav-links {
@@ -254,6 +249,15 @@ video {
     width: 100%;
     justify-content: flex-end;
     margin-top: 0.35rem;
+  }
+
+  .hero-content {
+    padding: clamp(4rem, 15vh, 6rem) 1rem 4rem;
+    margin-top: 3rem;
+  }
+
+  .hero-main-logo {
+    width: min(100%, 320px);
   }
 }
 
@@ -315,23 +319,28 @@ video {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(100%, 720px);
+  width: min(100%, 860px);
   padding: clamp(5rem, 18vh, 9rem) 2rem 7rem;
   text-align: left;
   isolation: isolate;
   margin-right: auto;
-  margin-top: 6rem;
+  margin-top: 5rem;
   align-self: end;
 }
 
-.hero-content::after {
-  content: "";
+.hero-logo-only {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.hero-main-logo {
   display: block;
-  width: 6rem;
-  height: 1px;
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.24);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+  width: min(100%, 560px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
 }
 
 .hero-content .eyebrow,
